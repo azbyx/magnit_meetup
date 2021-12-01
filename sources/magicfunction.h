@@ -2,7 +2,6 @@
 #include <iostream>
 #include <tuple>
 
-
 namespace impl {
   using TypeTpl = std::tuple<bool, int, std::string_view>;
 
@@ -38,7 +37,7 @@ template<typename... Args, typename F = std::enable_if_t<sizeof...(Args) == 3>>
 void magicFunction(Args ...args) {
   std::tuple<bool, int, std::string_view> res;
   impl::magicImpl(res, args...);
-  auto [boolVar, intVar, strviewVar] = res;
+  auto& [boolVar, intVar, strviewVar] = res;
   do_something(boolVar, intVar, strviewVar);
 
 }
